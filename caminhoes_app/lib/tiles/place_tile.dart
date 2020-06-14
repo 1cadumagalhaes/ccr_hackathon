@@ -35,7 +35,7 @@ class PlaceTile extends StatelessWidget {
                   name,
                   style: TextStyle(fontSize: 18),
                 ),
-                RenderStars(grade),
+                RenderStars(grade,14),
               ],
             ),
           )

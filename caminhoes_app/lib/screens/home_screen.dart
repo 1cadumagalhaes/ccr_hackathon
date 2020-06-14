@@ -1,5 +1,6 @@
 import 'package:caminhoes_app/models/user_model.dart';
 import 'package:caminhoes_app/screens/login_screen.dart';
+import 'package:caminhoes_app/tabs/health_tab.dart';
 import 'package:caminhoes_app/tabs/home_tab.dart';
 import 'package:caminhoes_app/tabs/places_tab.dart';
 import 'package:caminhoes_app/widgets/drawer.dart';
@@ -50,7 +51,7 @@ class HomeLogada extends StatelessWidget {
             centerTitle: true,
           ),
           drawer: CustomDrawer(_pageController),
-          body: Container(color: Colors.yellow,),
+          body: HealthTab(),
         ),
         Scaffold(
           appBar: AppBar(
