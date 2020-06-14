@@ -1,19 +1,15 @@
-
-
 import 'package:flutter/material.dart';
 
 class HealthTile extends StatelessWidget {
-  const HealthTile({
-    Key key,
-    @required this.content,
-    this.titulo,
-  }) : super(key: key);
+  
+  HealthTile(this.artigo);
 
-  final titulo;
-  final content;
+  final artigo;
+
 
   @override
   Widget build(BuildContext context) {
+
     return Card(
       margin: EdgeInsetsDirectional.only(bottom: 16),
       elevation: 10,
@@ -21,7 +17,7 @@ class HealthTile extends StatelessWidget {
           width: 300,
           padding: EdgeInsets.fromLTRB(16, 20, 16, 4),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Text(titulo,
+            Text(artigo[0]['titulo'],
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20)),
             ButtonBar(
               children: [
@@ -29,7 +25,7 @@ class HealthTile extends StatelessWidget {
                   textColor: Theme.of(context).primaryColor,
                   child: Text("ACESSAR"),
                   onPressed: () {
-                    testDialogs(context);
+                    testDialogs(context,artigo);
                   },
                 )
               ],
@@ -85,20 +81,8 @@ void showCustomDialog({BuildContext context, List dados, int atual}) {
   showDialog(context: context, builder: (context) => textDialog);
 }
 
-void testDialogs(context) {
-  var dados = [
-    {
-      "titulo": "Cuide da sua alimentação",
-      "tipo": "texto",
-      "conteudo":
-          "Comer bem não tem a ver apenas com a boa forma física, mas com o bem-estar geral. Opte por um cardápio variado e equilibrado. E nem precisa ser nada mirabolante, e sim usando o que você  tem no dia a dia mesmo."
-    },
-    {
-      "titulo": "Cuide da sua alimentação",
-      "tipo": "texto",
-      "conteudo":
-          "Seguem algumas dicas:\n - Alimente-se devagar\n -  Mastigue bem \n - Beba água suficiente para seu corpo \n - Consuma  frutas e verduras \n - Reduza o consumo de açúcar\n - Aposte em saladas também \n - Reduza o consumo de álcool e outras drogas."
-    }
-  ];
-  showCustomDialog(context: context, dados: dados, atual: 0);
+void testDialogs(context, dados) {
+
+  var atual = 0;
+    showCustomDialog(context: context, dados: dados, atual: atual);
 }
