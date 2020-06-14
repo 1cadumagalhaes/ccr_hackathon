@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:share/share.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -5,29 +6,41 @@ import 'package:url_launcher/url_launcher.dart';
 class SecurityTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text("Telefones", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-          SizedBox(height:30),
-          ContactCard(name: "Nome do lugar",phone:"(XX) XXXX-XXXX")
-        ],
-      ),
+    return FutureBuilder<QuerySnapshot>(
+      future: Firestore.instance.collection("segurança").getDocuments(),
+      builder: (context, snapshot){
+        if(!snapshot.hasData){
+          return Center(child: CircularProgressIndicator(),);
+        }else{
+          List<Widget> lista =  snapshot.data.documents.map((doc)=>ContactCard(doc)).toList();
+          return Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Telefones", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                SizedBox(height:30),
+                Expanded(child: ListView(children: lista,),)
+              ],
+            ),
+          );
+        }
+      },
     );
   }
 }
 
 
 class ContactCard extends StatelessWidget {
-  final phone;
-  final name;
+  final DocumentSnapshot snapshot;
 
-  const ContactCard({Key key, this.phone, this.name}) : super(key: key);
+  ContactCard(this.snapshot);
   @override
   Widget build(BuildContext context) {
-    return Container(
+    var name = snapshot['name'], phone = snapshot['phone'];
+    return Card(
+      color: Colors.blueGrey[100],
+      child: Container(
         width: 300,
         padding: EdgeInsets.all(16),
         child: Column(
@@ -72,7 +85,8 @@ class ContactCard extends StatelessWidget {
             )
           ],
         )
-      )
+      ),
+    )
         ;
   }
 }
