@@ -13,7 +13,7 @@ class CustomDrawer extends StatelessWidget {
     return Drawer(
         child: Container(
       color: Theme.of(context).primaryColor,
-      child: !UserModel.of(context).isLoggedIn()?MenuLogado(pageController: pageController):null,
+      child: UserModel.of(context).isLoggedIn()?MenuLogado(pageController: pageController):null,
     ));
   }
 }

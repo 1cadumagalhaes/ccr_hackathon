@@ -14,7 +14,6 @@ class RenderStars extends StatelessWidget {
       var stars = <Widget>[];
       
       for (var i = 5; i >= 1; i--) {
-        print(temp);
         if (temp == i) {
           stars.add(Icon(Icons.star, size: size));
           temp--;

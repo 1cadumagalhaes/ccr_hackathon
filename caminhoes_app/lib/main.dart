@@ -1,3 +1,4 @@
+import 'package:caminhoes_app/models/location_model.dart';
 import 'package:caminhoes_app/models/user_model.dart';
 import 'package:caminhoes_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,9 @@ class MyApp extends StatelessWidget {
       model: UserModel(),
       child: ScopedModelDescendant<UserModel>(
         builder: (context, child, model) {
-          return MaterialApp(
+          return ScopedModel<LocationModel>(
+            model: LocationModel(model),
+            child: MaterialApp(
             title: 'Caminhoneiros',
             theme: ThemeData(
               primaryColor: Colors.orange[600],
@@ -25,6 +28,7 @@ class MyApp extends StatelessWidget {
             ),
             debugShowCheckedModeBanner: false,
             home: HomeScreen(),
+          ),
           );
         },
       ),

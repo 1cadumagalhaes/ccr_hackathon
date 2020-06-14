@@ -3,6 +3,9 @@ import 'package:caminhoes_app/tiles/place_tile.dart';
 import 'package:flutter/material.dart';
 
 class NearbyCard extends StatelessWidget {
+  final position;
+
+  const NearbyCard({Key key, this.position}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class HealthCard extends StatelessWidget {
+
+  final address;
+  
+  const HealthCard({Key key, this.address, this.pageController}) : super(key: key);
+  final PageController pageController;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -20,7 +26,7 @@ class HealthCard extends StatelessWidget {
                     SizedBox(width: 16,),
                     Icon(Icons.my_location),
                     SizedBox(width: 16),
-                    Text("Rodovia BR XXX, km Y", style: TextStyle(fontSize: 18))
+                    Text("${address!=null?address['thoroughfare']:'Lugar'}, ${address!=null?address['subThoroughfare']:'num'}", style: TextStyle(fontSize: 18))
                   ],
                 ),
                 SizedBox(height: 16,),
@@ -41,7 +47,9 @@ class HealthCard extends StatelessWidget {
                     child: Column(
                       children: [
                         Text('Quando parar, temos algumas sugestões de atividades para você.', style: TextStyle(fontSize: 16),),
-                        RaisedButton(onPressed: (){}, child: Text('Saiba mais'), color: Theme.of(context).primaryColor,)
+                        RaisedButton(onPressed: (){
+                          pageController.jumpToPage(2);
+                        }, child: Text('Saiba mais'), color: Theme.of(context).primaryColor,)
                       ],
                     )
                   ),

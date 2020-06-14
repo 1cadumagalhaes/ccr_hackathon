@@ -1,3 +1,4 @@
+import 'package:caminhoes_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:caminhoes_app/models/user_model.dart';
 import 'package:caminhoes_app/screens/signup_screen.dart';
@@ -131,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onSuccess() {
-    Navigator.of(context).pop();
+    Future.delayed(Duration(seconds: 2)).then((value) => Navigator.of(context).pop()).then((value) => Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeScreen())));
   }
 
   void _onFail() {
