@@ -1,3 +1,4 @@
+import 'package:caminhoes_app/tabs/Health_tab.dart';
 import 'package:caminhoes_app/tabs/home_tab.dart';
 import 'package:caminhoes_app/widgets/drawer.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
             centerTitle: true,
           ),
           drawer: CustomDrawer(_pageController),
-          body: Container(color: Colors.yellow,),
+          body: HealthTab(),
         ),
         Scaffold(
           appBar: AppBar(
