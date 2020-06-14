@@ -61,7 +61,11 @@ class MenuLogado extends StatelessWidget {
                       Text("${model.isLoggedIn()?model.userData['rate']:'X.X'}", style: TextStyle(color: Colors.white),),
                       Icon(Icons.star, size: 14, color: Colors.white,)*/
                     ],
-                  )
+                  ),
+                  SizedBox(height:12),
+                  FlatButton(onPressed: (){
+                    model.signOut();
+                  }, child: Text("Sair"))
                 ],
               );
             },
