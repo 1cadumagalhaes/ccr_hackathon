@@ -1,6 +1,7 @@
 
 import 'package:caminhoes_app/models/user_model.dart';
 import 'package:caminhoes_app/screens/login_screen.dart';
+import 'package:caminhoes_app/tabs/complaint_tab.dart';
 import 'package:caminhoes_app/tabs/health_tab.dart';
 import 'package:caminhoes_app/tabs/home_tab.dart';
 import 'package:caminhoes_app/tabs/places_tab.dart';
@@ -12,7 +13,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //getLocation();
-    return UserModel.of(context).isLoggedIn()? HomeLogada(pageController: _pageController, ) : LoginScreen();
+    if(UserModel.of(context).isLoading && UserModel.of(context).isLoggedIn())
+      return Center(child: CircularProgressIndicator());
+    else if(!UserModel.of(context).isLoggedIn())
+      return LoginScreen(); 
+    else 
+    return HomeLogada(pageController: _pageController, );
   }
 }
 
@@ -68,9 +74,7 @@ class HomeLogada extends StatelessWidget {
             centerTitle: true,
           ),
           drawer: CustomDrawer(_pageController),
-          body: Container(
-            color: Colors.lightBlue,
-          ),
+          body: ComplaintTab(),
         ),
       ],
     );

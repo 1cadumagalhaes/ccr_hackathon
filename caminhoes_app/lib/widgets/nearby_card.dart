@@ -1,4 +1,3 @@
-
 import 'package:caminhoes_app/models/location_model.dart';
 import 'package:caminhoes_app/tiles/place_tile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,16 +21,26 @@ class NearbyCard extends StatelessWidget {
                 );
               } else {
                 var placesTiles = ListTile.divideTiles(
-                    tiles: snapshot.data.documents.map((doc)=>PlaceTile(doc)).toList(),
-                    color: Theme.of(context).accentColor).toList();
-                return ListView(children: placesTiles,);
+                        tiles: snapshot.data.documents
+                            .map((doc) => PlaceTile(doc))
+                            .toList(),
+                        color: Theme.of(context).accentColor)
+                    .toList();
+                return Card(
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                        child: Column(
+                  children: [
+                    Text('Lugares próximos', style: TextStyle(fontSize: 24),),
+                    Expanded(
+                        child: ListView(
+                      children: placesTiles,
+                    ))
+                  ],
+                )));
               }
             });
-        
       },
     );
   }
 }
-
-
-

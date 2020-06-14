@@ -71,7 +71,7 @@ var jsondata = [
                 {
                     "titulo": "Cuide da sua alimentação",
                     "tipo": "texto",
-                    "conteudo": "Seguem algumas dicas:\n - Alimente-se devagar\n -  Mastigue bem \n - Beba água suficiente para seu corpo \n - Consuma  frutas e verduras \n - Reduza o consumo de açúcar\n - Aposte em saladas também \n - Reduza o consumo de álcool e outras drogas."
+                    "conteudo": "Que tal algumas dicas?:\n - Alimente-se devagar\n -  Mastigue bem \n - Beba água suficiente para seu corpo \n - Consuma  frutas e verduras \n - Reduza o consumo de açúcar\n - Aposte em saladas também \n - Reduza o consumo de álcool e outras drogas."
                 }
             ]
         ]

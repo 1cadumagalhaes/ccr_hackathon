@@ -79,6 +79,31 @@ class UserModel extends Model {
     _auth.sendPasswordResetEmail(email: email);
   }
 
+  Future<Null> registerComplaint({@required String subject, @required String body, @required VoidCallback onSuccess, @required VoidCallback onFail}) async{
+    Map<String, dynamic> complaint = {
+      "subject": subject,
+      "body": body,
+      "uid": firebaseUser.uid
+    };
+
+    Firestore.instance.collection("complaints").add(complaint)
+    .then((value){
+    
+    
+    onSuccess();
+    notifyListeners();
+    }
+    )
+    .catchError(
+      (e){
+      onFail();
+
+      print(e);
+      notifyListeners();
+    });
+
+  }
+
   bool isLoggedIn(){
     return firebaseUser!=null;
   }

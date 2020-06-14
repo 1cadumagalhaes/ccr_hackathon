@@ -18,6 +18,7 @@ class HomeTab extends StatelessWidget {
         builder: (context, child, model){
           var address = model.address;
           var position = model.position;
+          print(position);
           return HomeBody(address: address, position: position,pageController: pageController,);
         },);
   }
@@ -48,6 +49,7 @@ class HomeBody extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
+              
               Expanded(child:NearbyCard(position: position))
             ],
           ));
