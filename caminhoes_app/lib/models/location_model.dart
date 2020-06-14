@@ -15,6 +15,8 @@ class LocationModel extends Model {
     if (user.isLoggedIn()) _checkPermission();
   }
 
+  var distance;
+
   _getCurrentLocation() {
     final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
     if (_geoStatus == GeolocationStatus.granted ||
@@ -86,5 +88,25 @@ class LocationModel extends Model {
     });
   }
 
+  getPlaceFromAddress(address){
+    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+    geolocator.placemarkFromAddress(address).then((value){
+      return value[0].toJson();
+    });
+  }
+
+  calculateDistance(endLocation){
+    print(endLocation);
+    var startLatitude = position.latitude, startLongitude = position.longitude;
+    var endLatitude = double.parse(endLocation['latitude']), endLongitude = double.parse(endLocation['longitude']);
+    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+    geolocator.distanceBetween(
+        startLatitude, startLongitude, endLatitude, endLongitude).then((value) {
+          var v = (value/1000).round().toString();
+          this.distance = v;
+          notifyListeners();
+        });
+
+  }
 
 }

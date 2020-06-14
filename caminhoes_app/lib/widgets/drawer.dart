@@ -44,7 +44,7 @@ class MenuLogado extends StatelessWidget {
                       width: 100,
                       height: 100,
                       decoration: BoxDecoration(
-                        image:DecorationImage(fit: BoxFit.cover, image: NetworkImage(model.isLoggedIn()?model.userData['image']:'https://ceulaw.org.br/wp-content/uploads/2017/08/user-placeholder.jpg')),
+                        image:DecorationImage(fit: BoxFit.cover, image: NetworkImage(model.isLoggedIn()?(model.userData['image']):'https://ceulaw.org.br/wp-content/uploads/2017/08/user-placeholder.jpg')),
                         borderRadius: BorderRadius.all(Radius.circular(50))
                       ),
                     ),

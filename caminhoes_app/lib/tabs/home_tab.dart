@@ -3,7 +3,6 @@ import 'package:caminhoes_app/models/user_model.dart';
 import 'package:caminhoes_app/widgets/health_card.dart';
 import 'package:caminhoes_app/widgets/nearby_card.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class HomeTab extends StatelessWidget {
@@ -35,7 +34,7 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
+    return 
       Container(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
@@ -49,9 +48,8 @@ class HomeBody extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              NearbyCard(position: position)
+              Expanded(child:NearbyCard(position: position))
             ],
-          ))
-    ]);
+          ));
   }
 }

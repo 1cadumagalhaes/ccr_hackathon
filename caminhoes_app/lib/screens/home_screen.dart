@@ -4,6 +4,7 @@ import 'package:caminhoes_app/screens/login_screen.dart';
 import 'package:caminhoes_app/tabs/health_tab.dart';
 import 'package:caminhoes_app/tabs/home_tab.dart';
 import 'package:caminhoes_app/tabs/places_tab.dart';
+import 'package:caminhoes_app/tabs/security_tab.dart';
 import 'package:caminhoes_app/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
@@ -11,11 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //getLocation();
-    return UserModel.of(context).isLoggedIn()
-        ? HomeLogada(
-            pageController: _pageController,
-          )
-        : LoginScreen();
+    return UserModel.of(context).isLoggedIn()? HomeLogada(pageController: _pageController, ) : LoginScreen();
   }
 }
 
@@ -63,9 +60,7 @@ class HomeLogada extends StatelessWidget {
             centerTitle: true,
           ),
           drawer: CustomDrawer(_pageController),
-          body: Container(
-            color: Colors.lightGreen,
-          ),
+          body: SecurityTab(),
         ),
         Scaffold(
           appBar: AppBar(

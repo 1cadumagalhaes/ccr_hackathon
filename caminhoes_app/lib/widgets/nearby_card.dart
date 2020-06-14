@@ -1,6 +1,9 @@
 
+import 'package:caminhoes_app/models/location_model.dart';
 import 'package:caminhoes_app/tiles/place_tile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 class NearbyCard extends StatelessWidget {
   final position;
@@ -8,22 +11,24 @@ class NearbyCard extends StatelessWidget {
   const NearbyCard({Key key, this.position}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        padding: EdgeInsets.all(16),
-        width: 400,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("Próximo de você: ",
-              style: TextStyle(
-                fontSize: 18,
-              )),
-          SizedBox(
-            height: 4,
-          ),
-          PlaceTile(type: 'Restaurante', name: 'Restaurante da rodovia', distance: 40, grade: 2.5),
-          PlaceTile(type: 'Parada', name: 'Parada CCR', distance: 50, grade: 4.75),
-        ]),
-      ),
+    return ScopedModelDescendant<LocationModel>(
+      builder: (context, child, model) {
+        return FutureBuilder<QuerySnapshot>(
+            future: Firestore.instance.collection("places").getDocuments(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                var placesTiles = ListTile.divideTiles(
+                    tiles: snapshot.data.documents.map((doc)=>PlaceTile(doc)).toList(),
+                    color: Theme.of(context).accentColor).toList();
+                return ListView(children: placesTiles,);
+              }
+            });
+        
+      },
     );
   }
 }
