@@ -56,9 +56,10 @@ class MenuLogado extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("${model.isLoggedIn()?model.userData['trips']:'X'}", style: TextStyle(color: Colors.white),),
-                      Text("  viagens   |   "),
+                      Text("  viagens"),
+                      /*Text("   |   "),
                       Text("${model.isLoggedIn()?model.userData['rate']:'X.X'}", style: TextStyle(color: Colors.white),),
-                      Icon(Icons.star, size: 14, color: Colors.white,)
+                      Icon(Icons.star, size: 14, color: Colors.white,)*/
                     ],
                   )
                 ],
