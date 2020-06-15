@@ -21,21 +21,27 @@ Toda a configuração foi feita para Android, mas o app pode ser compilado para 
 ## Telas
 
 1. Home
+
    ![tela inicial](telas/home.png)
 
 2. Menu
+
    ![menu lateral](telas/menu.png)
 
 3. Lugares
+
    ![tela de lugares próximos](telas/lugares.png)
 
 4. Saúde
+
    ![tela_ de saúde](telas/home.png)
 
 5. Segurança
+
    ![tela com informações de segurança](telas/segurança.png)
 
 6. Local
+
    ![tela de detalhe de local](telas/lugar.png)
    
 
