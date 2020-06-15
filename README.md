@@ -20,4 +20,4 @@ Focando na área de segurança,  pensamos no quão importantes é o acesso rápi
 
 ### Projeto desenvolvido com FLutter e Firebase
 
-### Arquitetura e implementação técnica por [1cadumagalhaes](1cadumagalhaes.github.io)
+### Arquitetura e implementação técnica por [1cadumagalhaes](https://1cadumagalhaes.github.io)
